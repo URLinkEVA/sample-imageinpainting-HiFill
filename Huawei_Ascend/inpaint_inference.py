@@ -25,7 +25,7 @@ class InpaintInference(object):
         # description of model
         inferenceModel = hiai.AIModelDescription('inpaint', self.model_path)
         # init graph
-        self.graph = self.model.CreateGraph(inferenceModel,self.graph_id,self.model_engine_id)
+        self.graph = self.model.CreateGraph(inferenceModel, self.graph_id, self.model_engine_id)
         if self.graph is None:
             print("Init Graph failed")
 
@@ -77,16 +77,4 @@ if __name__ == '__main__':
     inpainted.tofile('inpained.bin')
     attention.tofile('attention.bin')
     mask_processed.tofile('mask_processed.bin')
-
-
-
-
-
-
-
-
-
-
-
-
 
