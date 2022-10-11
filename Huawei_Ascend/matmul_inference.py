@@ -21,7 +21,7 @@ class MatMulInference(object):
     def _getgraph(self):
         inferenceModel = hiai.AIModelDescription('matmul', self.model_path)
         # init Graph
-        self.graph = self.model.CreateGraph(inferenceModel,self.graph_id,self.model_engine_id)
+        self.graph = self.model.CreateGraph(inferenceModel, self.graph_id, self.model_engine_id)
         if self.graph is None:
             print("Init Graph failed")
 
@@ -31,12 +31,12 @@ class MatMulInference(object):
         y = y.reshape(1024,3072).copy() #make sure memory order is the same as np order
         sizes = [1024*1024,1024*3072]
         input_tensor_list = []
-        input_tensor_list.append(hiai.NNTensor(x, height=1024, width = 1024, channel = 1 ,name = 'x', data_type = DataType.FLOAT32_T, size = sizes[0]))
-        input_tensor_list.append(hiai.NNTensor(y, height=1024 , width = 3072, channel =1,name = 'y', data_type = DataType.FLOAT32_T, size = sizes[1]))
+        input_tensor_list.append(hiai.NNTensor(x, height=1024, width = 1024, channel = 1, name = 'x', data_type = DataType.FLOAT32_T, size = sizes[0]))
+        input_tensor_list.append(hiai.NNTensor(y, height=1024, width = 3072, channel = 1, name = 'y', data_type = DataType.FLOAT32_T, size = sizes[1]))
         nntensorList=hiai.NNTensorList([input_tensor_list[0],input_tensor_list[1]])
         if not nntensorList:			
             print(" matmul nntensorList is null")
-        resultList = self.model.Inference(self.graph,nntensorList)
+        resultList = self.model.Inference(self.graph, nntensorList)
         # pdb.set_tracce()
         result = resultList[0]
         return result
@@ -59,16 +59,4 @@ if __name__ == '__main__':
     result = matmul_app.Inference(x,y)
     
     print(result)
-
-
-
-
-
-
-
-
-
-
-
-
 
