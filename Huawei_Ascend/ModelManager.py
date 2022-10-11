@@ -11,14 +11,14 @@ class ModelManager(object):
             print('get graph failed')
             return None
         with myGraph.as_default():
-            model_engine = hiai.Engine(hiai.EngineConfig(engine_name='ModelInferenceEngine', side=hiai.HiaiPythonSide.Device,engine_id = model_engine_id))
+            model_engine = hiai.Engine(hiai.EngineConfig(engine_name = 'ModelInferenceEngine', side = hiai.HiaiPythonSide.Device, engine_id = model_engine_id))
             if model_engine is None:
                 print('get model_engine failed')
                 return None
             else:
                 print('get model_engine ok!')
             with model_engine.as_default():
-                if (None == model_engine.inference(input_tensor_list=hiai.NNTensorList(), ai_model=model)):
+                if (None == model_engine.inference(input_tensor_list = hiai.NNTensorList(), ai_model = model)):
                     print('Init model_engine failed ')
                     return None
                 else:
