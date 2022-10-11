@@ -101,7 +101,7 @@ class Inpaint_App(object):
         small_img = resize_ave(large_img, MULTIPLE)
         small_mask = cv2.resize(raw_mask, (INPUT_SIZE, INPUT_SIZE), interpolation = cv2.INTER_NEAREST)
         
-        # set hole region to 1. and backgroun to 0.
+        # set hole region to 1. and background to 0.
         small_mask = 1. - small_mask
         return large_img, large_mask, small_img, small_mask
 
